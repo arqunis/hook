@@ -58,12 +58,10 @@ pub fn hook(_attr: TokenStream, input: TokenStream) -> TokenStream {
 
     let result = quote! {
         #(#attrs)*
-        #vis fn #ident<'fut>(#inputs) -> futures::future::BoxFuture<'fut, #output> {
-            use futures::future::FutureExt;
-
-            async move {
+        #vis fn #ident<'fut>(#inputs) -> ::std::pin::Pin<::std::boxed::Box<dyn ::std::future::Future<Output = #output> + 'fut>> {
+            Box::pin(async move {
                 #block
-            }.boxed()
+            })
         }
     };
 
