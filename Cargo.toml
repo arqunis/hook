@@ -2,7 +2,7 @@
 name = "hook"
 version = "0.1.0"
 authors = ["Alex M. M. <acdenissk69@gmail.com>"]
-edition = "2018"
+edition = "2024"
 description = "Hook macro extracted from the `command_attr` crate"
 license = "ISC"
 
